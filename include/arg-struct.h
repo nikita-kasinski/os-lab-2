@@ -3,10 +3,15 @@
 
 #include <cstdio>
 
-struct arg_struct
+class arg_struct
 {
+public:
     const int* array;
     const size_t size;
-    int* return_values;
+    int* return_values = nullptr;
     int return_size;
+    ~arg_struct()
+    {
+        delete[] return_values;
+    }
 };
