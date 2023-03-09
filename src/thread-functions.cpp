@@ -6,7 +6,7 @@
 
 DWORD WINAPI min_max(LPVOID args)
 {
-    arg_struct *args_pointer = (arg_struct*)args;
+    minmax_args *args_pointer = (minmax_args*)args;
     if (args_pointer -> size == 0)
     {
         std::cerr << "Array is empty. Exit thread\n";
@@ -16,22 +16,20 @@ DWORD WINAPI min_max(LPVOID args)
     {
         int *array = args_pointer->array;
         const size_t size = args_pointer->size;
-        args_pointer->return_values = new int*[2];
-        args_pointer->return_size = 2;
-        int **rarray = args_pointer->return_values;
-        const int rsize = args_pointer->return_size;
-        rarray[0] = &array[0]; //min
-        rarray[1] = &array[0]; //max
+        int **min = &args_pointer->min;
+        int **max = &args_pointer->max;
+        *min = &array[0];
+        *max = &array[0];
         for (size_t i = 0; i < size; ++i)
         {
-            if (*rarray[0] > array[i])
+            if (**min > array[i])
             {
-                rarray[0] = &array[i];
+                *min = &array[i];
                 Sleep(7);
             }
-            if (*rarray[1] < array[i])
+            if (**max < array[i])
             {
-                rarray[1] = &array[i];
+                *max = &array[i];
                 Sleep(7);
             }
         }
