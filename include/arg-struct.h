@@ -3,15 +3,19 @@
 
 #include <cstdio>
 
-class arg_struct
+class minmax_args
 {
 public:
     int* array;
     size_t size;
-    int** return_values = nullptr;
-    int return_size;
-    ~arg_struct()
-    {
-        delete[] return_values;
-    }
+    int* return_values[2] = {nullptr};
+    int return_size = 0;
+};
+
+class average_args
+{
+public:
+    int* array;
+    size_t size;
+    int average;
 };
