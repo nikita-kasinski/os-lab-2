@@ -60,6 +60,6 @@ DWORD WINAPI average(LPVOID args)
         double real_average = sum / (double)size;
         *average = (real_average + 0.5F);
         std::cout << "Average : " << real_average << "\n";
-        std::cout << "Since source array is of integer type it will be rounded to " << *average << "\n";
+        std::cout << "Since source array is of integer type, average will be rounded to " << *average << "\n";
     }
 }
