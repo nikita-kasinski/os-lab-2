@@ -2,6 +2,6 @@
 #pragma once
 #include <windows.h>
 
-DWORD WINAPI min_max(LPVOID array);
+DWORD WINAPI min_max(LPVOID args);
 
-DWORD WINAPI average(LPVOID array);
+DWORD WINAPI average(LPVOID args);
