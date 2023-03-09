@@ -55,6 +55,7 @@ DWORD WINAPI average(LPVOID args)
         for (size_t i = 0; i < size; ++i)
         {
             sum += array[i];
+            Sleep(12);
         }
         double real_average = sum / (double)size;
         *average = (real_average + 0.5F);
