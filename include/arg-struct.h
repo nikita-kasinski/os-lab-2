@@ -1,20 +1,18 @@
 // author: Nikita Kasinski
 #pragma once
 
-#include <cstdio>
-
 class minmax_args
 {
 public:
-    int *array;
+    const int *array;
     size_t size;
-    int *min, *max;
+    size_t indexMax, indexMin;
 };
 
 class average_args
 {
 public:
-    int *array;
+    const int *array;
     size_t size;
     int average;
 };
