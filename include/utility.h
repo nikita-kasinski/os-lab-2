@@ -16,5 +16,6 @@ public:
     // returns -1 if size is zero
     static size_t getMaximumIndexWithSleep(const int* array, size_t size);
 
+    // sets ok to false when size is zero, returns 0 in such case
     static double getAverageWithSleep(const int* array, size_t size, bool& ok);
 };
