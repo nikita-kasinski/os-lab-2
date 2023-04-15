@@ -15,7 +15,7 @@ DWORD WINAPI min_max(LPVOID args)
     if (args_pointer->indexMin == -1 || args_pointer->indexMax == -1)
     {
         EnterCriticalSection(iocs);
-        std::cerr << "Array is empty. Exit thread\n";
+        std::cerr << "Array is empty. Exit thread minmax\n";
         LeaveCriticalSection(iocs);
         ExitThread(1);
     }
@@ -32,25 +32,26 @@ DWORD WINAPI min_max(LPVOID args)
 DWORD WINAPI average(LPVOID args)
 {
     average_args *args_pointer = (average_args *)args;
-    if (args_pointer->size == 0)
+    CRITICAL_SECTION *iocs = args_pointer->iocs;
+
+    bool ok;
+    double real_average = Utility::getAverageWithSleep(args_pointer->array, args_pointer->size, ok);
+
+    if (!ok)
     {
-        std::cerr << "Array is empty. Exit thread\n";
+        EnterCriticalSection(iocs);
+        std::cerr << "Array is empty. Exit thread average\n";
+        LeaveCriticalSection(iocs);
         ExitThread(1);
     }
-    else
-    {
-        const int *array = args_pointer->array;
-        const size_t size = args_pointer->size;
-        int *average = &args_pointer->average;
-        int sum = 0;
-        for (size_t i = 0; i < size; ++i)
-        {
-            sum += array[i];
-            Sleep(12);
-        }
-        double real_average = sum / (double)size;
-        *average = (real_average + 0.5F);
-        std::cout << "Average : " << real_average << "\n";
-        std::cout << "Since source array is of integer type, average will be rounded to " << *average << "\n";
-    }
+
+
+    args_pointer->average = static_cast<int>(real_average + 0.5F);
+    int average = args_pointer->average;
+
+    EnterCriticalSection(iocs);
+    std::cout << "Average : " << real_average << "\n";
+    std::cout << "Since source array is of integer type, average will be rounded to " << average << "\n";
+    LeaveCriticalSection(iocs);
+}
 }
