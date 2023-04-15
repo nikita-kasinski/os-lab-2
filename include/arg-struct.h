@@ -1,20 +1,21 @@
 // author: Nikita Kasinski
 #pragma once
-
-#include <cstdio>
+#include <windows.h>
 
 class minmax_args
 {
 public:
-    int *array;
+    const int *array;
     size_t size;
-    int *min, *max;
+    size_t indexMax, indexMin;
+    CRITICAL_SECTION *iocs;
 };
 
 class average_args
 {
 public:
-    int *array;
+    const int *array;
     size_t size;
     int average;
+    CRITICAL_SECTION *iocs;
 };

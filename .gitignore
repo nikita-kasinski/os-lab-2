@@ -1,3 +1,4 @@
-*.o
-main.exe
-main
+bin/*
+obj/*
+cov/*
+.vscode/*
