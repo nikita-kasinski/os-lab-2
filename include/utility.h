@@ -4,6 +4,9 @@
 class Utility
 {
 private:
+    static constexpr size_t minSleep = 7;
+    static constexpr size_t maxSleep = minSleep;
+    static constexpr size_t avgSleep = 12;
 
 public:
 
