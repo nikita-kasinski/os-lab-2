@@ -19,3 +19,22 @@ size_t Utility::getMinimumIndexWithSleep(const int* array, size_t size)
 
     return minIndex;
 }
+
+size_t Utility::getMaximumIndexWithSleep(const int* array, size_t size)
+{
+    if (size == 0)
+    {
+        return -1;
+    }
+    size_t maxIndex = 0;
+    for (size_t i = 0; i < size; ++i)
+    {
+        if (array[i] < array[maxIndex])
+        {
+            maxIndex = i;
+            Sleep(Utility::maxSleep);
+        }
+    }
+
+    return maxIndex;
+}
