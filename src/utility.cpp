@@ -29,7 +29,7 @@ size_t Utility::getMaximumIndexWithSleep(const int* array, size_t size)
     size_t maxIndex = 0;
     for (size_t i = 0; i < size; ++i)
     {
-        if (array[i] < array[maxIndex])
+        if (array[i] > array[maxIndex])
         {
             maxIndex = i;
             Sleep(Utility::maxSleep);
