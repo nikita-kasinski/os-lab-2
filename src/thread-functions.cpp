@@ -54,4 +54,3 @@ DWORD WINAPI average(LPVOID args)
     std::cout << "Since source array is of integer type, average will be rounded to " << average << "\n";
     LeaveCriticalSection(iocs);
 }
-}
