@@ -1,8 +1,8 @@
 EXECM = bin/main.exe
 EXECT = bin/test.exe
 objM = obj/main.o
-obj = obj/controller.o obj/thread-functions.o
-objT = obj/test.o obj/tcontroller.o
+obj = obj/utility.o obj/thread-functions.o
+objT = obj/test.o obj/tutility.o
 CC = g++
 CPPFLAGS = -std=c++17 -Wall -Iinclude
 TESTLIB = -lgtest -lgtest_main -lgcov
